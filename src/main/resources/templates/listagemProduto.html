@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Groups</title>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+		.text-white {
+			padding: '0px';
+		}
+
+		.alert-danger {
+			margin: "15px";
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<div class="container p-3 my-3 bg-dark text-white">
+		<div class="container p-3 my-3 bg-dark text-white">
+		<div th:each="produto : ${produtos}">
+	
+		<li class="collection-item">
+			<div><span class = "collection-item" th:text="${produto.nome}"> tttt
+				</span>
+				
+				<span th:text= "${produto.valor}"></span>
+
+		</div>
+		<!--<h1> Cadastro de Produto</h1>
+		<div class="container p-3 my-3 bg-primary text-white">
+			<form method="post">
+
+				Nome: <input type="text" value="" name="Nome" />
+				Preço: <input type="number" value="" name="valor" step="0.01" />
+				Marca:
+
+				<select th:field="*{marcas}">
+					<option th:each="i : ${#marcas}" th:value="${i}" th:text="${i}"
+						></option>
+				</select>
+
+				<span th:if="${mensagem != null}">
+
+					<div th:each="erro : ${mensagem}">
+
+						<div class="alert alert-danger" th:text="${erro} ?: ' '" />
+
+					</div>
+
+				</span>
+
+
+
+
+
+
+
+				<button class="waves-effect waves-light btn" type="submit">Save</button>-->
+
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

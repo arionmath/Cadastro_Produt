@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Cadstro produto</title>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!-- Import Jquery-->
+	<script src="../jquery.js"></script>
+	<!-- Import maskMoney-->
+	<script src="../jquery.maskMoney.js"> </script>
+
+	<script>
+		$(document).ready(function () {
+
+			$("#preco").maskMoney({prefix: 'R$ ', allowNegative: true, thousands: '.', decimal: ',', affixesStay: false});
+
+
+		});
+
+	</script>
+
+	<style>
+		.text-white {
+			padding: '0px';
+		}
+
+		.alert-danger {
+			margin: "15px";
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="container p-3 my-3 bg-dark text-white">
+		<h1> Cadastro de Produto</h1>
+		<div class="container p-3 my-3 bg-primary text-white">
+
+			<form id="cadastro" method="post">
+				<span th:if="${mensagem != null}">
+
+					<div th:each="erro : ${mensagem}">
+
+						<div class="alert alert-danger" th:text="${erro} ?: ' '" />
+
+					</div>
+
+				</span>
+
+				Nome: <input type="text" value="" name="nome" />
+				Preço: <input type="text" value="" name="valor" id="preco" />
+				Marca:
+				<select id="marca" name="marca">
+					<option value="">Selecione a marca</option>
+					<option th:each="marca : ${marcas}" th:value="${marca.id}" th:text="${marca.nome}"
+						selected="selected"></option>
+				</select>
+				<!--
+	<select th:field="${marcas}" name="marca" id ="name">
+    <option th:each="i : ${marcas}" th:value="carro" th:text="${i.nome}" th:selected="${i}" name = "marca"></option>
+      
+      
+</select>
+-->
+
+				<button class="waves-effect waves-light btn" type="submit">Save</button>
+
+			</form>
+		</div>
+	</div>
+		<div th:replace="~{index::menu}">
+		</div>
+		<div th:replace="~{index::footer}">
+		</div>
+</body>
+
+</html>

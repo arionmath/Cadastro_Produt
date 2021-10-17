@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<h1>Página inicial</h1>
+<ul class="nav flex-column dark" th:fragment="menu">
+  <li class="nav-item">
+    <a class="nav-link active" href = "/marca/cadastro"> cadastro de marca </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href = "/produto/cadastro"> cadastro de produto</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href = "/marca/listar"> todas marcas</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href = "/produto/listar"> todos produtos</a></a>
+  </li>
+</ul>
+<p><a href = "/marca/cadastro"> cadstro de marca </a>
+<p><a href = "/produto/cadastro"> cadastro de produto</a>
+<p><a href = "/marca/listar"> todoas marcas</a>
+<p><a href = "/produto/listar"> todos produtos</a>
+
+<div th:fragment ="footer">
+
+ <div class="container my-2">
+
+  <section class="">
+  <!-- Footer -->
+  <footer class="text-center text-white " style="background-color: #0a4275;">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: CTA -->
+      <section class="">
+        <p class="d-flex justify-content-center align-items-center">
+          <span class="me-3">Atividade de cadastro de produtos</span>
+          
+        </p>
+      </section>
+      <!-- Section: CTA -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</section>
+  
+</div>
+  
+</div>
+
+</body>
+</html>

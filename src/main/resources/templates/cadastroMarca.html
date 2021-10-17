@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Groups</title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import bootstrap-->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+.text-white{
+	padding:'0px';
+}
+.alert-danger{
+	margin : "15px";
+}
+</style>
+</head>
+<body>
+<div class="container p-3 my-3 bg-dark text-white">
+<h1> Cadastro de marca</h1>
+<div class = "container p-3 my-3 bg-primary text-white">
+<form method="post">
+	
+		Nome da marca: <input type="text" value="" name="Nome" />
+		
+		<span th:if="${mensagem != null}">
+		
+		
+		<div class="alert alert-danger" th:text="${mensagem} ?: ' '" />
+		
+		</span>
+		
+		
+		
+    	
+		
+		
+		
+		<button class="waves-effect waves-light btn" type="submit">Save</button>
+
+	</form>
+	<div th:replace="~{index::footer}">
+		</div>
+</div>
+</div>
+</body>
+</html>

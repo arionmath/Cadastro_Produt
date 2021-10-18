@@ -8,7 +8,8 @@ import com.atividade.dev.models.ModelMarca;
 
 public interface RepositoryMarca extends JpaRepository<ModelMarca, Long>{
 	
-	 List<ModelMarca> findByNomeLike(String nome);
+	
+	 List<ModelMarca> findByNomeContaining(String nome);
 	
 
 }

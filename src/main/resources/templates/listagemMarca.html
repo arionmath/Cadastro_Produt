@@ -1,56 +1,81 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Groups</title>
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!--Import bootstrap-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<style>
-		.text-white {
-			padding: '0px';
-		}
+<meta charset="ISO-8859-1">
+<title>Groups</title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import bootstrap-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+.text-white {
+	padding: '0px';
+}
 
-		.alert-danger {
-			margin: "15px";
-		}
-	</style>
+.alert-danger {
+	margin: "15px";
+}
+</style>
+
+<!-- Bootstrap core CSS -->
+<link href="../bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="../dashboard.css" rel="stylesheet">
+
 </head>
 
 <body>
-<div class="container p-3 my-3 bg-dark text-white">
+	<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"> Listagem
+			de marcas </a>
+		<form class="form-inline" method="GET" action="/marca/listar/">
+			<div class="form-group mb-2">
+
+				<div class="form-group mx-sm-3 mb-2">
+					<label class="sr-only">Pesquise</label> <input type="text"
+						class="form-control" id="procura"
+						placeholder="termo para pesquisar" name="busca">
+				</div>
+				<button type="submit" class="btn btn-primary mb-2">Buscar</button>
+		</form>
+	</nav>
+	<div class="container-fluid">
+		<div class="row">
+
+			<div th:insert="~{index::menulateral}" class="col-lg-3"></div>
 
 
-<form class="form-inline" method = "GET" action="/marca/listar/">
-  <div class="form-group mb-2">
-   
-  <div class="form-group mx-sm-3 mb-2">
-    <label class="sr-only">Pesquise</label>
-    <input type="text" class="form-control" id="procura" placeholder="termo para pesquisar" name = "busca">
-  </div>
-  <button type="submit" class="btn btn-primary mb-2">Buscar</button>
-</form>
+			<div class="container my-0 col-lg-9 ">
 
 
 
-	
-	
-		<div class="container p-3 my-3 bg-dark text-white">
-		<div th:each="marca : ${marcas}">
-	
-		<li class="collection-item">
-		
-		<div><span class = "collection-item" th:text="${marca.nome}"></span>
-				
-		
-		
-			</div>
-		<!--<h1> Cadastro de Produto</h1>
+
+
+
+
+
+				<div class="container p-3 my-3 bg-light">
+					<div th:each="marca : ${marcas}">
+
+						<li class="collection-item">
+
+							<div>
+								<span class="collection-item" th:text="${marca.nome}"></span>
+
+
+
+							</div> <!--<h1> Cadastro de Produto</h1>
 		<div class="container p-3 my-3 bg-primary text-white">
 			<form method="post">
 
@@ -79,11 +104,13 @@
 
 
 
-				<button class="waves-effect waves-light btn" type="submit">Save</button>-->
+				<button class="waves-effect waves-light btn" type="submit">Save</button>
 
-			</form>
+			</form>-->
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
 </body>
 
 </html>

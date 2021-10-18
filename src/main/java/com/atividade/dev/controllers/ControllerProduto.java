@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.atividade.dev.models.ModelProduto;
-import com.atividade.dev.models.ModelProdutoForm;
 import com.atividade.dev.service.MarcaService;
 import com.atividade.dev.service.ProdutoService;
 
@@ -28,12 +28,22 @@ public class ControllerProduto {
 
 	
 	@GetMapping("/produto/listar")
-	public ModelAndView listarProdutos() {
-		ModelAndView mav = new ModelAndView("listagemProduto");
+	public ModelAndView listarProdutos(@PathParam(value = "busca") String busca) {// usar o mesmo nome do parametro e argumento
+		System.out.println("\nTermo para busca = "+busca+"\n");
+			
 		
+		ModelAndView mav = new ModelAndView("listagemProduto");
+		if (!(busca == null)) {
+			mav.addObject("produtos",produtoService.procurarPor(busca));
+			
+		}else {		
 		mav.addObject("produtos", produtoService.ListarNomes());
+		}
 		return mav;
 	}
+
+	
+	
 	@GetMapping("/produto/cadastro")
 	public ModelAndView salvaProdutoView() {
 		ModelAndView mav = new ModelAndView("cadastroProduto");
@@ -68,7 +78,7 @@ public class ControllerProduto {
 			return mav;
 		}
 		ModelAndView mav = new ModelAndView("cadastroProduto.html");
-		//produtoService.salvaProduto(produto);
+		produtoService.salvaProduto(produto);
 		mav.addObject("marcas", marcaService.ListarNomes());
 		return mav;
 		

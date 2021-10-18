@@ -1,69 +1,115 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Cadstro produto</title>
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!--Import bootstrap-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- Import Jquery-->
-	<script src="../jquery.js"></script>
-	<!-- Import maskMoney-->
-	<script src="../jquery.maskMoney.js"> </script>
+<meta charset="ISO-8859-1">
+<title>Cadastro produto</title>
+<!--Import bootstrap-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-	<script>
-		$(document).ready(function () {
+<!-- Import Jquery-->
+<script src="../jquery.js"></script>
+<!-- Import maskMoney-->
+<script src="../jquery.maskMoney.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="../bootstrap.min.css" rel="stylesheet">
 
-			$("#preco").maskMoney({prefix: 'R$ ', allowNegative: true, thousands: '.', decimal: ',', affixesStay: false});
+<!-- Custom styles for this template -->
+<link href="../dashboard.css" rel="stylesheet">
 
 
-		});
+<script>
+	$(document)
+			.ready(
+					function() {
 
-	</script>
+						$("#preco").maskMoney({
+							prefix : 'R$ ',
+							allowNegative : true,
+							thousands : '.',
+							decimal : ',',
+							affixesStay : false
+						});
 
-	<style>
-		.text-white {
-			padding: '0px';
-		}
+						$("#enviar")
+								.click(
+										function() {
 
-		.alert-danger {
-			margin: "15px";
-		}
-	</style>
+											console.log("botao clicado");
+
+											$("#preco").val(
+													$("#preco").val().replace(
+															"R$:", " "));
+											$("#preco").val(
+													$("#preco").val().replace(
+															".", ""));
+											$("#preco").val(
+													$("#preco").val().replace(
+															",", "."));
+
+											if ($("#preco") == "") {
+												console
+														.log("preco é igual a nada")
+											}
+
+											console.log("Valor de preco é: "
+													+ $("#preco").val()
+													+ "\nCom o tipo "
+													+ typeof $("#preco"));
+
+										});
+
+					});
+</script>
 
 </head>
 
 <body>
+	<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"> Cadastro
+			de produtos </a>
+	</nav>
 
-	<div class="container p-3 my-3 bg-dark text-white">
-		<h1> Cadastro de Produto</h1>
-		<div class="container p-3 my-3 bg-primary text-white">
 
-			<form id="cadastro" method="post">
-				<span th:if="${mensagem != null}">
+	<div class="container-fluid">
+		<div class="row">
+			<div th:insert="~{index::menulateral}" class="col-lg-3"></div>
 
-					<div th:each="erro : ${mensagem}">
 
-						<div class="alert alert-danger" th:text="${erro} ?: ' '" />
 
-					</div>
 
-				</span>
 
-				Nome: <input type="text" value="" name="nome" />
-				PreÃ§o: <input type="text" value="" name="valor" id="preco" />
-				Marca:
-				<select id="marca" name="marca">
-					<option value="">Selecione a marca</option>
-					<option th:each="marca : ${marcas}" th:value="${marca.id}" th:text="${marca.nome}"
-						selected="selected"></option>
-				</select>
-				<!--
+
+
+			<div class=" container my-0 col-lg-9">
+				<h1>Cadastro de Produto</h1>
+				<div class="container p-3 my-3 bg-primary text-white">
+
+					<form id="cadastro" method="post">
+						<span th:if="${mensagem != null}">
+
+							<div th:each="erro : ${mensagem}">
+
+								<div class="alert alert-danger" th:text="${erro} ?: ' '" />
+
+							</div>
+
+						</span> Nome: <input type="text" value="" name="nome" /> PreÃ§o: <input
+							type="text" value="" name="valor" id="preco" /> Marca: <select
+							id="marca" name="marca">
+							<option value="">Selecione a marca</option>
+							<option th:each="marca : ${marcas}" th:value="${marca.id}"
+								th:text="${marca.nome}" selected="selected"></option>
+						</select>
+						<!--
 	<select th:field="${marcas}" name="marca" id ="name">
     <option th:each="i : ${marcas}" th:value="carro" th:text="${i.nome}" th:selected="${i}" name = "marca"></option>
       
@@ -71,15 +117,20 @@
 </select>
 -->
 
-				<button class="waves-effect waves-light btn" type="submit">Save</button>
+						<button id="enviar" class="waves-effect waves-light btn" type="submit">
+						Salvar
+						</button>
 
-			</form>
+					</form>
+				</div>
+			</div>
+
+
 		</div>
 	</div>
-		<div th:replace="~{index::menu}">
-		</div>
-		<div th:replace="~{index::footer}">
-		</div>
+
+	</div>
+	<div th:replace="~{index::rodape}"></div>
 </body>
 
 </html>

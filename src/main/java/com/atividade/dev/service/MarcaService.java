@@ -38,8 +38,8 @@ public class MarcaService {
 
 	}
 
-	public Object busca(String busca) {
-		return RM.findByNomeLike(busca);
+	public Object procurarPor(String busca) {
+		return RM.findByNomeContaining(busca);
 		
 	}
 }

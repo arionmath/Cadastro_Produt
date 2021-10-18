@@ -18,6 +18,7 @@ public class ProdutoService {
 		
 		
 		System.out.println("produto salva: "+produto.getNome()+produto.getId());
+		RP.save(produto);
 		
 	}
 
@@ -32,6 +33,13 @@ public class ProdutoService {
 //			
 //		}
 		return lista;
+	}
+	
+	public Object procurarPor(String busca) {
+//		System.out.println("\n==========================\n"
+//				+ "pesquisa por: "+busca+"\n"
+//						+ "=============================\n");
+		return RP.findByNomeContaining(busca);
 	}
 
 	
